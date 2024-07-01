@@ -14,8 +14,7 @@ pipeline {
         docker { image 'node:16-alpine' }
       }
       steps {
-        sh 'npm install -g yarn'  // Ensure yarn is installed
-        sh 'yarn install'          // Install dependencies
+        sh 'npx yarn install'     // Use npx to run yarn install
       }
     }
     stage('Build') {
@@ -23,8 +22,9 @@ pipeline {
         docker { image 'node:16-alpine' }
       }
       steps {
-        sh 'node --version'        // Optional: Check Node.js version
-        sh 'yarn build'            // Build the project
+        sh 'node --version'       // Optional: Check Node.js version
+        sh 'npx yarn --version'   // Optional: Check Yarn version
+        sh 'npx yarn build'       // Use npx to run yarn build
       }
     }
   }
