@@ -1,9 +1,8 @@
-import React from 'react'
 import logo from '../assets/logo.png'
 import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
-    const linkClass = ({ isActive }) =>
+    const linkClass = ({ isActive }: { isActive: boolean }) =>
         isActive
           ? 'bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
           : 'text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2';

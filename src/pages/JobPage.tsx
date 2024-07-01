@@ -1,12 +1,11 @@
 import React from 'react';
 import Spinner from '../components/Spinner';
 import { IJob } from '../interface/job.interface';
-import { LoaderFunction, useLoaderData, useParams } from 'react-router-dom';
+import { LoaderFunction, useLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import { FaArrowLeft, FaMapMarker } from 'react-icons/fa'
 
 const JobPage: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
     const job = useLoaderData() as IJob;
 
     if (job) {
