@@ -1,13 +1,30 @@
 pipeline {
   agent none
   stages {
-    stage('Front-end') {
+    stage('Checkout') {
       agent {
         docker { image 'node:16-alpine' }
       }
       steps {
-        sh 'node --version'
-        sh 'yarn build'
+        checkout scm
+      }
+    }
+    stage('Install Dependencies') {
+      agent {
+        docker { image 'node:16-alpine' }
+      }
+      steps {
+        sh 'npm install -g yarn'  // Ensure yarn is installed
+        sh 'yarn install'          // Install dependencies
+      }
+    }
+    stage('Build') {
+      agent {
+        docker { image 'node:16-alpine' }
+      }
+      steps {
+        sh 'node --version'        // Optional: Check Node.js version
+        sh 'yarn build'            // Build the project
       }
     }
   }
