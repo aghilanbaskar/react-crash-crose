@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Checkout') {
       agent {
-        docker { image 'node:16-alpine' }
+        docker { image 'node:18-alpine' }  // Update to Node.js 18
       }
       steps {
         checkout scm
@@ -11,7 +11,7 @@ pipeline {
     }
     stage('Install Dependencies') {
       agent {
-        docker { image 'node:16-alpine' }
+        docker { image 'node:18-alpine' }  // Update to Node.js 18
       }
       steps {
         sh 'npx yarn install'     // Use npx to run yarn install
@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Build') {
       agent {
-        docker { image 'node:16-alpine' }
+        docker { image 'node:18-alpine' }  // Update to Node.js 18
       }
       steps {
         sh 'node --version'       // Optional: Check Node.js version
